@@ -11,12 +11,10 @@ void binary_tree_delete(binary_tree_t *tree)
 	while (tree->left != NULL)
 	{
 		tree = tree->right;
-		free(tree->right);
 	}
 	while (tree->left != NULL)
 	{
 		tree = tree->left;
-		free(tree->left);
 	}
 	free(tree);
 	exit(0);
