@@ -6,16 +6,10 @@
  */
 void binary_tree_delete(binary_tree_t *tree)
 {
-	if (tree == NULL)
-		exit(0);
-	while (tree->left != NULL)
+	if (tree != NULL)
 	{
-		tree = tree->right;
+		binary_tree_delete(tree->left);
+		binary_tree_delete(tree->right);
+		free(tree);
 	}
-	while (tree->left != NULL)
-	{
-		tree = tree->left;
-	}
-	free(tree);
-	exit(0);
 }
