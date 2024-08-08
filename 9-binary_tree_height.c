@@ -18,12 +18,14 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	{
 		counter++;
 		copyr = copyr->right;
+		binary_tree_height(copyr);
 	}
 	copyl = tree;
 	while (copyl->left != NULL)
 	{
 		count++;
 		copyl = copyl->left;
+		binary_tree_height(copyl);
 	}
 	if (counter > count)
 		return (counter);
