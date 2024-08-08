@@ -6,30 +6,17 @@
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	int counter = 0;
-	int count = 0;
-	const binary_tree_t *copyr;
-	const binary_tree_t *copyl;
+	size_t counter = 0;
+	size_t count = 0;
 
 	if (tree == NULL)
 		return (0);
-	copyr = tree;
-	while (copyr->right != NULL)
-	{
-		counter++;
-		copyr = copyr->right;
-		binary_tree_height(copyr);
-	}
-	copyl = tree;
-	while (copyl->left != NULL)
-	{
-		count++;
-		copyl = copyl->left;
-		binary_tree_height(copyl);
-	}
-	if (counter > count)
+	if (tree->right != NULL)
+		counter = 1 + binary_tree_height(tree->right);
+	else if (tree->left != NULL)
+		count = 1 + binary_tree_height(tree->left);
+	if (count < counter)
 		return (counter);
-	if (count > counter)
+	else
 		return (count);
-	return (counter);
 }
