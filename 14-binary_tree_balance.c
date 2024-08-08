@@ -20,11 +20,19 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	else
 		return (count);
 }
+/**
+ * binary_tree_balance - This function sees the difference
+ * between right and left (balance)
+ * @tree: The root of the tree.
+ * Return: The diference between left (+) and right (-).
+ */
 int binary_tree_balance(const binary_tree_t *tree)
 {
 	int left = 0;
 	int right = 0;
 
+	if (tree == NULL)
+		return (0);
 	right = binary_tree_height(tree->right);
 	left = binary_tree_height(tree->left);
 	return (left - right);
