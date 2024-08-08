@@ -6,12 +6,14 @@
  */
 int binary_tree_balance(const binary_tree_t *tree)
 {
+	int counter = 0;
+	int count = 0;
+
 	if (tree == NULL)
 		return (0);
-	if (tree->right == NULL && tree->left == NULL)
-		return (+0);
-	if (tree->right == NULL || tree->left == NULL)
-		return (-1);
-	else
-		return (+2);
+	if (tree->right)
+		counter = 1 + binary_tree_balance(tree->right);
+	if (tree->left)
+		count = 1 + binary_tree_balance(tree->left);
+	return (count - counter);
 }
